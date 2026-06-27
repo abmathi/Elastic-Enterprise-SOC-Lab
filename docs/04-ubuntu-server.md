@@ -164,3 +164,63 @@ Enterprise Linux environments commonly integrate centralized identity providers 
 
 Authentication logs record the username performing administrative actions. Individual user accounts provide accountability, improve auditing, and simplify incident investigations.
 
+---
+
+## Ubuntu Pro
+
+### Lab Decision
+
+Skipped Ubuntu Pro during installation.
+
+### Reason
+
+The standard Ubuntu LTS repositories provide all required packages for this project without introducing additional licensing or configuration complexity.
+
+### Enterprise Consideration
+
+Organizations requiring extended security maintenance, compliance features, or Livepatch capabilities may subscribe to Ubuntu Pro for production servers.
+
+### SOC Relevance
+
+Understanding operating system support lifecycles helps analysts evaluate vulnerability management, patching strategies, and compliance requirements.
+
+---
+
+## OpenSSH
+
+### Lab Decision
+
+Installed the OpenSSH Server package.
+
+### Reason
+
+SSH enables secure remote administration and reflects how Linux servers are typically managed in enterprise environments.
+
+### Enterprise Consideration
+
+Production SSH deployments often include key-based authentication, centralized identity management, multi-factor authentication, and hardened SSH configurations.
+
+### SOC Relevance
+
+SOC analysts and security engineers frequently use SSH to investigate incidents, review logs, verify system health, and perform administrative tasks on Linux infrastructure.
+
+---
+
+## Optional Packages
+
+### Lab Decision
+
+Did not install any optional server packages.
+
+### Reason
+
+Only required software will be installed throughout the project to minimize unnecessary services and maintain a controlled learning environment.
+
+### Enterprise Consideration
+
+Production servers generally follow a minimal installation philosophy to reduce maintenance requirements and the system's attack surface.
+
+### SOC Relevance
+
+Every installed service represents another potential source of vulnerabilities and telemetry. Analysts should understand which services are expected to exist on a server.
+
