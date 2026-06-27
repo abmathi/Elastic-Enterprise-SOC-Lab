@@ -224,3 +224,83 @@ Production servers generally follow a minimal installation philosophy to reduce 
 
 Every installed service represents another potential source of vulnerabilities and telemetry. Analysts should understand which services are expected to exist on a server.
 
+
+---
+
+# Post-Installation Validation
+
+## Hostname Verification
+
+### Command
+
+```bash
+hostname
+```
+
+### Purpose
+
+Verify that the server hostname matches the planned naming convention.
+
+### Expected Result
+
+`SOC-UBU01`
+
+### SOC Relevance
+
+Hostnames appear throughout SIEM dashboards, detection rules, alerts, and investigations. Consistent naming improves incident response efficiency.
+
+---
+
+## Operating System Verification
+
+### Command
+
+```bash
+cat /etc/os-release
+```
+
+### Purpose
+
+Verify the installed Ubuntu version.
+
+### SOC Relevance
+
+Knowing the operating system version is important for software compatibility, vulnerability management, and incident response.
+
+---
+
+## Kernel Verification
+
+### Command
+
+```bash
+uname -r
+```
+
+### Purpose
+
+Verify the installed Linux kernel.
+
+### SOC Relevance
+
+Kernel versions determine available security features, driver compatibility, and vulnerability exposure.
+
+---
+
+## User Verification
+
+### Command
+
+```bash
+whoami
+```
+
+### Purpose
+
+Confirm that administrative work is being performed from a standard user account.
+
+### SOC Relevance
+
+Using individual administrative accounts improves accountability and auditability during investigations.
+
+
