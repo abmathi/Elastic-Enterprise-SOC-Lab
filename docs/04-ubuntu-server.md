@@ -304,3 +304,98 @@ Confirm that administrative work is being performed from a standard user account
 Using individual administrative accounts improves accountability and auditability during investigations.
 
 
+---
+
+## Check Disk Usage
+
+### Command
+
+```bash
+df -h
+```
+
+### Purpose 
+
+Confirms that disk usage is at normal operational numbers. 
+
+### SOC Relevance
+
+Elastic stores logs on disks and if disk usage reaches 100% then Elasticsearch stops indexing, alerts stop firing, and investigation becomes impossible. 
+
+---
+
+## Check Memory
+
+### Command
+
+```bash
+free -h
+```
+
+### Purpose 
+
+Ram is where programs live and Elasticsearch is very memory hungry. Knowing how much memory Linux sees is critical. 
+
+### SOC Relevance
+
+A server running out of RAM can cause Kibana crashes, Elasticsearch crashes, Agent failures, and search slowdowns.  
+
+---
+
+## Check CPU Information
+
+### Command
+
+```bash
+lscpu
+```
+
+### Purpose 
+
+This command reports CPU model, virtual CPUs, architecture, threads, and cores
+
+### SOC Relevance
+
+If Elasticsearch is performing poorly, CPU is one of the first resources to investigate. 
+
+---
+
+## Check IP Addresses
+
+### Command
+
+```bash
+ip addr
+```
+
+### Purpose 
+
+This command shows your network interfaces and related information to them such as IP adresses, and DHCP information. 
+
+### SOC Relevance
+
+Having a properly set up IP configuration is vital to the entire ecosystem.
+
+---
+
+## Verify Internet Connectivity
+
+### Command
+
+```bash
+ping -c 4 8.8.8.8
+```
+
+```bash
+ping -c google.com
+```
+
+### Purpose 
+
+These commands test the connection to the network and DNS of the system.
+
+### SOC Relevance
+
+The first ping only tests network connectivity. The second ping tests both network connectivity and DNS. If the IP ping works but the hostname fails then you know the network is fine but DNS is broken.
+
+---
