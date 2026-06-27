@@ -17,3 +17,27 @@ SOC-UBU01 will host the Elastic Stack and serve as the central Security Informat
 - Elasticsearch
 - Kibana
 - Fleet Server
+
+## Installation Decisions
+
+### Language
+
+English
+
+**Reason:** Standard language used throughout enterprise environments and Elastic documentation.
+
+---
+
+### Keyboard
+
+English (US)
+
+**Reason:** Matches the physical keyboard and prevents issues when using Linux command-line tools and SSH.
+
+---
+
+### Installation Type
+
+Ubuntu Server (Standard)
+
+**Reason:** Includes common administration tools and provides a smoother learning experience while maintaining a server-focused environment.
