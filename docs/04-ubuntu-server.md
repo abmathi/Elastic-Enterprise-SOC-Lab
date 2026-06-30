@@ -399,3 +399,141 @@ These commands test the connection to the network and DNS of the system.
 The first ping only tests network connectivity. The second ping tests both network connectivity and DNS. If the IP ping works but the hostname fails then you know the network is fine but DNS is broken.
 
 ---
+
+### Command
+
+```bash
+ip route
+```
+
+### Result
+
+This command displays the current routing table.
+
+### Why It Matters
+
+The server can have multiple interfaces; the routing table shows Linux which route to send internet traffic through. 
+
+### SOC Relevance
+
+---
+
+### Command
+
+```bash
+ls /etc/netplan
+```
+
+### Result
+
+This command lists the contents of the netplan directory.
+
+### Why It Matters
+
+Netplan is like the blueprint that tells Ubuntu how networking should look when the machine starts. 
+
+### SOC Relevance
+
+---
+
+### Command
+
+```bash
+sudo cat /etc/netplan/*.yaml
+```
+
+### Result
+
+This command shows you what's inside of the yaml file.
+
+### Why It Matters
+
+This file can show you what interfaces are connected and whether DHCP is enabled. 
+
+### SOC Relevance
+
+---
+
+### Command
+
+### Prediction
+
+### Result
+
+### Why It Matters
+
+### SOC Relevance
+
+---
+
+### Command
+
+### Prediction
+
+### Result
+
+### Why It Matters
+
+### SOC Relevance
+
+---
+
+### Command
+
+### Prediction
+
+### Result
+
+### Why It Matters
+
+### SOC Relevance
+
+---
+
+### Command
+
+### Prediction
+
+### Result
+
+### Why It Matters
+
+### SOC Relevance
+
+---
+
+### Command
+
+### Prediction
+
+### Result
+
+### Why It Matters
+
+### SOC Relevance
+
+---
+
+### Command
+
+### Prediction
+
+### Result
+
+### Why It Matters
+
+### SOC Relevance
+
+---
+
+### Command
+
+### Prediction
+
+### Result
+
+### Why It Matters
+
+### SOC Relevance
+
+---
