@@ -416,6 +416,8 @@ The server can have multiple interfaces; the routing table shows Linux which rou
 
 ### SOC Relevance
 
+Knowing how to check IP routing is a key troubleshooting step in any IT environment.
+
 ---
 
 ### Command
@@ -433,6 +435,8 @@ This command lists the contents of the netplan directory.
 Netplan is like the blueprint that tells Ubuntu how networking should look when the machine starts. 
 
 ### SOC Relevance
+
+Knowing where your configuration files live ahead of time can save crucial time in the troubleshooting process.
 
 ---
 
@@ -452,65 +456,177 @@ This file can show you what interfaces are connected and whether DHCP is enabled
 
 ### SOC Relevance
 
+Being able to read and know what the configuration file means is just as important as knowing how to find it.
+
+---
+
+## Network Interface Discovery
+
+### Observation
+
+The intiial Netplan configuration only contained the NAT interface.
+
+### Reason
+
+Ubuntu automatically generated a configuration only for the interface that recieved a DHCP lease. 
+
+### Why It Matters
+
+Infrastructure changes should be based on verified system information. Before assigning static IP addresses, all interfaces should be identified and validated. 
+
+### SOC Relevance
+
+Connectivity issues can be caused by incorrect interface selections or assumptions about network configuration. Verifying interface names ahead of time reduces configuration errors. 
+
+---
+
+## Netplan Static IP Configuration
+
+### Concept 
+
+Netplan is how Ubuntu knows how networking should look when the machine starts. Linux uses configuration files for networking due to the ease of applying edits and linking to other services that may use them. Automation is another main reason because in enterprise environments you don't have just one server, you may have thousands of servers. Nobody opens a GUI 5,000 times when you can write a script to push it instantly.
+
+### Lab Decision
+
+Added a static IP address to enp0s8 while leaving enp0s3 on DHCP.
+
+### Reason 
+
+Preserve internet access while giving the internal enterprise network a predicatable address.
+
+### Enterprise Consideration 
+
+Infrastructure servers typically use static addresses or DHCP reservations to ensure consistent connectivity.
+
+### SOC Relevance
+
+Stable IP addressing simplifies SIEM configuration, log forwarding, agent enrollment, and incident response.
+
+---
+
+## Configuration Verification
+
+### Command 
+
+```bash
+sudo netplan generate
+```
+
+### Purpose
+
+Netplan generate validates the updated configuration file and generates the backend networking configuration without making any live changes.
+
+### Expected Result
+
+When running this command you should expect there to be no output unless there is a problem with your configuraration file, such as a syntax error.
+
+### Result
+
+There was no error message after running the command so our configuration file is working.
+
+### SOC Relevance
+
+Properly configuring your netplan configuration file will avoid throwing any errors when assigning a static IP to the interface.
+
 ---
 
 ### Command
 
-### Prediction
+```bash
+sudo netplan apply
+```
+
+### Purpose
+
+After generating your updated configuration file, the apply command confirms and applies the changes.
+
+### Expected Result
+
+This command should also produce no output if there are no errors with your configuration file.
 
 ### Result
 
-### Why It Matters
+Running this command returned no error messages so our configuration looks good to go.
 
 ### SOC Relevance
+
+Being able to sucessfully configure the network configuration of your SIEM server is the first step in avoiding problems while trying to build the environment. 
 
 ---
 
 ### Command
 
-### Prediction
+```bash
+ip addr
+```
+
+### Purpose
+
+This command is then run to confirm that the changes we made actually took place.
+
+### Expected Result
+
+We should now expect the internal adapter to have the static IP address that we configured. 
 
 ### Result
 
-### Why It Matters
+Running this command confirmed that the internal interface now has the static IP address that we assigned it. 
 
 ### SOC Relevance
+
+It is vital that you double check and confirm the changes instead of just assuming that you did it correctly in order to save time and avoid mistakes.
 
 ---
 
 ### Command
 
-### Prediction
+```bash
+ip route
+```
+
+### Purpose
+
+This command was ran to confirm that the default route is still the NAT.
+
+### Expected Result
+
+We expect that the default route is still the NAT because assigning a static IP does not automatically change the route.
 
 ### Result
 
-### Why It Matters
+Upon running the command we were able to confirm that the NAT is the default route as expected.
 
 ### SOC Relevance
+
+Double checking your work instead of relying on the assumptions assures proper configuration and no unexpected errors occur.
 
 ---
 
 ### Command
 
-### Prediction
+```bash
+ping -c 4 8.8.8.8
+```
+
+```bash
+ping -c google.com
+```
+
+### Purpsose
+
+Lastly, pinging allows us to confirm that the change works as it should. 
+
+### Expected Result
+
+Since we double checked all the changes we made, it is expected that we should have sucessful pings.
 
 ### Result
 
-### Why It Matters
+And just as expected, our ping was successful which confirms we changed the networking without breaking the server.
 
 ### SOC Relevance
 
----
-
-### Command
-
-### Prediction
-
-### Result
-
-### Why It Matters
-
-### SOC Relevance
+Taking the time to go back and check the work made after each step is a valuable habit to create that can help to avoid a lot of headache when troubleshooting problems.
 
 ---
 
