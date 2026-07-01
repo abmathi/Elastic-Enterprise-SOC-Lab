@@ -630,15 +630,145 @@ Taking the time to go back and check the work made after each step is a valuable
 
 ---
 
+## Server Readiness Validation
+
 ### Command
+
+```bash
+sudo apt update
+```
 
 ### Prediction
 
+Before running this command I expected it to install the available updates.
+
+### Purpose 
+
+This command is actually used to update the package information.
+
 ### Result
+
+Running this command told me that 39 packages can be upgraded.
 
 ### Why It Matters
 
+It's important to be able to see the available updates before just automatically running the actual upgrade command as it gives you an idea of the changes that will be made. 
+
 ### SOC Relevance
+
+This is important for security and IT engineers because one tiny change can bring down the whole system. Being sure of the changes you're making will save you a lot of work and headache in the long run.
+
+---
+
+### Command
+
+```bash
+sudo apt upgrade -y
+```
+
+### Prediction
+
+After learning that the previous command is the one that checks for updates, I was quite certain before running this one that it would be the one to initiate the actual update.
+
+### Purpose
+
+As expected, this command is used to upgrade all the package that have available updates. The -y confirms you want to make that decison without having to answer another following prompt.
+
+### Result
+
+Running this command successfully updated all 39 packages that we had available updates for.
+
+### Why It Matters
+
+This matters because we want a fully updated system before we start introducing Elasticsearch into the environment.
+
+### SOC Relevance
+
+This is an important step for engineers because there's a good chance of breaking things if you start introducing new tools into an outdated system, especially if those tools require certain versions of packages.
+
+---
+
+### Command
+
+```bash
+timedatectl status
+```
+
+### Prediction
+
+I predicted that this command would be used to give more info on the time configuration of the system.
+
+### Purpose
+
+This command is used to ensure that your systems time is synchronized.
+
+### Result
+
+The output of this command showed that the date and time were synchronized it UTC format and that NTP service is running.
+
+### Why It Matters
+
+Having times synchronized across all systems is a vital part of incident response. Logs are only useful if their timestamps are trustworthy.
+
+### SOC Relevance
+
+Imagine you're investigating an attack and one log says 14:01, another log says 13:58, another is 14:05. Was the attacker moving through the system or are the clocks just simply different? 
+
+---
+
+### Command
+
+```bash
+systemctl --failed
+```
+
+### Prediction
+
+My prediction for this command was that it would be checking for any failures in system programs or services.
+
+### Purpose
+
+This command is used to show if you have any failed services.
+
+### Result
+
+The command confirmed that this system has 0 failed services. 
+
+### Why It Matters
+
+Before installing anything you want to know if the operating system already has existing problems.
+
+### SOC Relevance
+
+You don't want to install new software or services if your machine already has problems as you could possibly be adding to them. Knowing the health status of your system before and after changes are being made is key when it's time to troublshoot problems.
+
+---
+
+### Command
+
+```bash 
+uptime
+```
+
+### Prediction
+
+My prediction for this command was that it's to display how long the system has been running.
+
+### Purpose
+
+This command can be used to show how long the system has been up, how many users are logged in, and how much load is on the system.
+
+### Result
+
+Running the command showed us that the system has just started up after a reboot, has one user signed in, and a small load.
+
+### Why It Matters
+
+This is important information because it allows you to get a feel for the overall status of your system.
+
+### SOC Relevance
+
+This allowed us to establish a baseline for the system before we start installing more tools and services such as Elasticsearch.
 
 ---
 
