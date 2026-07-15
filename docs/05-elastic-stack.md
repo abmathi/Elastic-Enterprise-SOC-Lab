@@ -70,3 +70,77 @@ This command was used in order to verify that the key exists after running the c
 ### SOC Relevance
 
 Knowing how to double check and confirm the steps you are taking is a valuable skill that will save you a lot of time in the long run.
+
+---
+
+## Adding the Elastic Repository
+
+### Command
+
+```bash
+echo "deb [signed-by=/etc/apt/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main" | \
+sudo tee /etc/apt/sources.list.d/elastic-9.x.list
+```
+
+### Predction
+
+Before running this command, I predicted that it would be used to add the elastic repository to the specified file.
+
+### Reason
+
+This command is used to write the cofiguration to a new file with root priveleges and only trust packages signed by this specific key.
+
+### SOC Relevance
+
+It's important for analysts to clarify what packages they are trusting when building a system that is using least privilege and limited trust. 
+
+---
+
+### Command
+
+```bash
+sudo apt update
+```
+
+### Reason 
+
+We used this command again to download the latest package metadata after adding the package repo.
+
+### SOC Relevance
+
+This command is like refreshing the catalog of a library. You know what books are available but you haven't checked any out yet. 
+
+---
+
+### Command
+
+```bash
+apt-cache policy elasticsearch
+```
+
+### Reason 
+
+This command was used to verify that elasticsearch is available before installing it.
+
+### SOC Relevance 
+
+This is just a precautionary step to answer questions like if the package is available, which version would be installed, and what repository provides it. 
+
+---
+
+### Command
+
+```bash
+apt show elasticsearch
+```
+
+### Reason
+
+This comand is used to explore the package further and see metadata like the version, who maintains it, install size, and more.
+
+### SOC Relevance
+
+This is a useful command to get a better sense of what you're downloading before you do it, as it provides a lot of useful information to better understand the package. 
+
+---
+
