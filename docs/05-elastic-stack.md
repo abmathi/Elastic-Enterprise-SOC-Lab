@@ -144,3 +144,71 @@ This is a useful command to get a better sense of what you're downloading before
 
 ---
 
+## Installing Elasticsearch
+
+### Command
+
+```bash
+sudo apt install elasticsearch
+```
+
+### Prediction
+
+My prediction beforehand was that this command would start the install of elasticsearch.
+
+### Reason
+
+The reason behind running this command was to install elasticsearch on the system.
+
+### SOC Relevance
+
+This is an important milestone and the start of building out the SIEM infrastructure.
+
+---
+
+### Command
+
+```bash
+dpkg -l | grep elasticsearch
+```
+
+### Prediction 
+
+I thought this command would have something to do with checking if the install command worked properly.
+
+### Reason 
+
+The reason for running this command is to verify that the package is installed on the system.
+
+### SOC Relevance
+
+Knowing how to ask Debain if this package is installed is an important step to know. 
+
+---
+
+### Command
+
+```bash
+dpkg -L elasticsearch
+```
+
+### Prediction 
+
+My prediction for this one is that the -L would be used in the dpkg command to list something to do with trhe elasticsearch repository.
+
+### Reason
+
+The reason for running this command is to discover all the files in the selected repository.
+
+### SOC Relevance
+
+An important thing for analyts to do is not treat applications like black boxes. It is important to know how to discover what lives inside the things you add to your systems.
+
+---
+
+| Directory | Purpose |
+|-----------|---------|
+| /etc/elasticsearch | "    "|
+| /usr/share/elasticsearch | "  " | 
+| /var/lib/elasticsearch | "  " |
+| /var/log/elasticsearch | "  " |
