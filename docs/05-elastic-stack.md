@@ -206,9 +206,14 @@ An important thing for analyts to do is not treat applications like black boxes.
 
 ---
 
+## Filesystem Hierarchy Standard
+
 | Directory | Purpose |
 |-----------|---------|
-| /etc/elasticsearch | "    "|
-| /usr/share/elasticsearch | "  " | 
-| /var/lib/elasticsearch | "  " |
-| /var/log/elasticsearch | "  " |
+| /etc/elasticsearch | Configuration Files|
+| /usr/share/elasticsearch | Application Binaries and supporting files | 
+| /var/lib/elasticsearch |Indexed data and cluster state |
+| /var/log/elasticsearch | Servicing log files|
+
+---
+
