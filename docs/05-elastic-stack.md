@@ -217,3 +217,52 @@ An important thing for analyts to do is not treat applications like black boxes.
 
 ---
 
+## Starting Elasticsearch
+
+### Command
+
+```bash
+systemctl status elasticsearch
+```
+
+### Purpose
+
+This command is used to check the current status of Elasticsearch and return whether it's running, enabled, etc.
+
+### Result
+
+This command returned the status as being disabled and inactive.
+
+### SOC Relevance
+
+Knowing how to check if the application is actually running will help in troubleshooting. Before looking in any directories, you can run this command to see the status of the application.
+
+---
+
+### Command
+
+```bash 
+systemctl enable elasticsearch
+```
+
+### Purpose
+
+This command tells linux to start the service automatically every time that the server boots up. 
+
+### SOC Relevance
+
+This is a quality of life type of command, as you don't want to manually start the service every time you reboot the server.
+
+---
+
+### Command
+
+```bash
+systemctl start elasticsearch
+```
+
+### Purpose 
+
+This is the command that actually starts the service. 
+
+---
