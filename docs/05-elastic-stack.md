@@ -266,3 +266,42 @@ systemctl start elasticsearch
 This is the command that actually starts the service. 
 
 ---
+
+## Secure Elasticsearch API Access
+
+    HTTP request to port 9200
+    
+        ↓
+
+    curl error 52 / empty reply
+
+        ↓
+
+    verified port 9200 was listening
+
+        ↓
+
+    tested HTTPS
+
+        ↓
+
+    received authentication-required response
+
+        ↓
+
+    identified TLS + authentication as expected behavior
+
+        ↓
+
+    used http_ca.crt + elastic credentials
+
+        ↓
+
+    successful API response
+
+        ↓
+
+    cluster health: green
+
+---
+
