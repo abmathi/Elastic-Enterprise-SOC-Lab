@@ -305,3 +305,17 @@ This is the command that actually starts the service.
 
 ---
 
+## Kibana Installation 
+
+### What Kiabana Does
+
+Kibana is the user interface and server for visualizing the data stored in elasticsearch. It provides dashbaords, visualizations, and tools to manage patterns and objects. 
+
+### Why Kibana and Elasticsearch are seperate services
+
+Elasticsearch stores and searches data; Kibana presents and queries data through the UI.
+
+### Why Kibana gets its own Linux server
+
+Least Privilege: Kibana process should run with an account limited to only what it needs.
+
