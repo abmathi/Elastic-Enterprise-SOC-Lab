@@ -365,5 +365,17 @@ Admin access
        │
  Host-Only
    enp0s9
+~~~
 
+## Kibana Interface Exploration
+
+
+| Kibana area| What it is |
+|-----|--------|
+| Stack Management| Data stored in Elasticsearch |
+|Index Management | Maintains performance and ensures effecient data storage |
+|Discover | Explore and search documents in elasticsearch  |
+|Elastic Security| Build security oriented workflows |
+|Fleet | Centralized agent management plane |
+| Dev Tools | Console  |
 
