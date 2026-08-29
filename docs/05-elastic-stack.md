@@ -319,3 +319,51 @@ Elasticsearch stores and searches data; Kibana presents and queries data through
 
 Least Privilege: Kibana process should run with an account limited to only what it needs.
 
+## Kibana Initial Setup
+
+### What an enrollment token is
+
+An enrollment token is a short lived credential used to connect to a new Kibana instance to the elasticsearch cluster.
+
+### Enable VS Start
+
+systemctl enable: sets the service to start automaticaly on boot
+
+systemctl start: starts the service in the current session
+
+### What the local curl test proved
+
+The local curl test cofirmed that the kibana http endpoint was listening and responding to requests. 
+
+## Kibana Secure Environment
+
+### Kibana Enrollment Token 
+
+The enrollment token securely connected Kibana to the Elasticsearch cluster during setup.
+
+### Why Kibana uses service identity instead of elastic
+
+elastic is a highly privileged admin account and should not be used for routin operations in applications.
+
+### How Kibana was verified after enrollment
+
+Kibana was verified by confimring it started successfully and could communicate with elasticsearch.
+
+~~~
+Internet / updates
+       │
+     NAT
+   enp0s3
+
+SOC telemetry
+       │
+ SOC-LAB-NET
+   enp0s8
+
+
+Admin access
+       │
+ Host-Only
+   enp0s9
+
+
